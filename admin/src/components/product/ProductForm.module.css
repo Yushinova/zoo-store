@@ -1,0 +1,641 @@
+.container {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formSection {
+  padding: 20px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.formGroup:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.input,
+.textarea,
+.select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.gridTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Чекбоксы */
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkboxText {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Типы животных */
+.petTypesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.selectedCount {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Кнопки */
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+.cancelButton,
+.clearButton,
+.submitButton,
+.backButton,
+.finishButton {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.cancelButton {
+  background: #6c757d;
+  color: white;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background: #545b62;
+}
+
+.clearButton {
+  background: #ffc107;
+  color: #212529;
+}
+
+.clearButton:hover:not(:disabled) {
+  background: #e0a800;
+}
+
+.submitButton {
+  background: #28a745;
+  color: white;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #218838;
+}
+
+.backButton {
+  background: #6c757d;
+  color: white;
+}
+
+.backButton:hover {
+  background: #545b62;
+}
+
+.finishButton {
+  background: #007bff;
+  color: white;
+}
+
+.finishButton:hover {
+  background: #0056b3;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Спиннер загрузки */
+.loadingSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Сообщение об успехе */
+.successMessage {
+  text-align: center;
+  padding: 24px;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  color: #155724;
+}
+
+.successIcon {
+  width: 48px;
+  height: 48px;
+  background: #28a745;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 auto 16px;
+}
+
+.successMessage h3 {
+  font-size: 20px;
+  margin: 0 0 12px 0;
+}
+
+.successMessage p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+
+.successHint {
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+  margin-top: 8px !important;
+}
+
+/* Секция загрузки */
+.uploadSection {
+  margin: 24px 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .gridTwo {
+    grid-template-columns: 1fr;
+  }
+  
+  .petTypesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  
+  .buttons {
+    flex-direction: column;
+  }
+  
+  .cancelButton,
+  .clearButton,
+  .submitButton,
+  .backButton,
+  .finishButton {
+    width: 100%;
+  }
+}
+
+.loadingText {
+  padding: 12px;
+  background: #f8f9fa;
+  border: 1px dashed #dee2e6;
+  border-radius: 6px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Изменяем цвета кнопок для лучшей видимости состояний */
+.submitButton:disabled:not(:hover) {
+  background: #6c757d;
+  opacity: 0.7;
+}
+
+/*Для update form*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.productId {
+  background: #f0f0f0;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.loadingContainer .loadingSpinner {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.productInfo {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.productInfo h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.imageCount {
+  margin: 10px 0 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.leftButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.rightButtons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.deleteButton {
+  padding: 10px 20px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.deleteButton:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.deleteButton:disabled {
+  background: #e0a0a8;
+  cursor: not-allowed;
+}
+
+.deleteConfirmButton {
+  padding: 10px 20px;
+  background: #ffc107;
+  color: #212529;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+  animation: pulse 1.5s infinite;
+}
+
+.deleteConfirmButton:hover:not(:disabled) {
+  background: #e0a800;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
+}
+
+/* Адаптивные стили для кнопок */
+@media (max-width: 768px) {
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .leftButtons,
+  .rightButtons {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .deleteButton,
+  .deleteConfirmButton {
+    flex: 1;
+  }
+
+  .validationErrors {
+  background: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.validationTitle {
+  color: #c53030;
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.validationList {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.validationItem {
+  color: #c53030;
+  margin-bottom: 5px;
+}
+
+.validationItem:last-child {
+  margin-bottom: 0;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.requiredHint {
+  color: #666;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.requiredWarning {
+  color: #c53030;
+  background: #fff5f5;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #fed7d7;
+  margin: 10px 0 0 0;
+  font-size: 14px;
+}
+
+.petTypesStatus {
+  margin-top: 15px;
+}
+
+.selectedCount {
+  color: #2d3748;
+  font-weight: 500;
+  margin: 10px 0 0 0;
+}
+
+/* Обновляем стили для обязательного выбора */
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.checkboxLabel:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+}
+
+.checkbox:checked + .checkboxText {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* Отключаем кнопку сохранения, если не выбран тип животного */
+.submitButton:disabled[title] {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.submitButton:disabled[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 10;
+  margin-bottom: 10px;
+  pointer-events: none;
+}
+
+.submitButton:disabled[title]:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #333;
+  margin-bottom: -6px;
+  z-index: 10;
+}
+.inputError {
+  border-color: #e53e3e !important;
+  background-color: #fff5f5;
+}
+
+.fieldError {
+  display: block;
+  color: #e53e3e;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.errorHighlight {
+  border-color: #e53e3e;
+  color: #c53030;
+  background-color: #fed7d7;
+}
+
+.imagesPreview {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.imagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.imagePreview {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.previewImage {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+}
+
+.imageName {
+  padding: 4px;
+  font-size: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.moreImages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9ecef;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #6c757d;
+  font-weight: 500;
+}
+/* Стили для шага с изображениями */
+.imagesStepContainer {
+  padding: 20px;
+}
+
+.imagesInfo {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.uploadSection {
+  margin: 30px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+}

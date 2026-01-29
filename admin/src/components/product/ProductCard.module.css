@@ -1,0 +1,331 @@
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card.inactive {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.card.inactive:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Размеры */
+.small {
+  max-width: 220px;
+}
+
+.medium {
+  max-width: 280px;
+}
+
+.large {
+  max-width: 340px;
+}
+
+/* Бейдж акции */
+.promotionBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, #ff4757, #ff3838);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(255, 56, 56, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Изображение */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 75%; /* Соотношение 4:3 */
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.inactiveOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.inactiveOverlay span {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.editButton {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid #ddd !important;
+  border-radius: 50% !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 100 !important;
+  transition: all 0.2s ease !important;
+  opacity: 0 !important;
+  transform: translateY(-5px) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.card:hover .editButton {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.editButton:hover {
+  background: #fff !important;
+  border-color: #007bff !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3) !important;
+}
+
+.editIcon {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: #666 !important;
+}
+
+.editButton:hover .editIcon {
+  stroke: #007bff !important;
+}
+
+/* Делаем кнопку всегда видимой в админке */
+.adminView .editButton {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Адаптивность для кнопки редактирования */
+@media (max-width: 768px) {
+  .editButton {
+    opacity: 1 !important; /* Всегда показывать на мобильных */
+    transform: translateY(0) !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+  
+  .editIcon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+/* Остальные существующие стили... */
+.content {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+  color: #333;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
+.brand {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Рейтинг */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 4px 0;
+}
+
+.starFull {
+  color: #ffd700;
+  font-size: 16px;
+}
+
+.starHalf {
+  position: relative;
+  color: #ddd;
+  font-size: 16px;
+}
+
+.starHalf::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+  color: #ffd700;
+}
+
+.starEmpty {
+  color: #ddd;
+  font-size: 16px;
+}
+
+.ratingValue {
+  font-size: 14px;
+  color: #666;
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+/* Цена */
+.priceSection {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  line-height: 1;
+}
+
+.oldPrice {
+  font-size: 16px;
+  color: #999;
+  text-decoration: line-through;
+  margin-top: 4px;
+}
+
+/* Предупреждение о количестве */
+.quantityWarning {
+  font-size: 12px;
+  color: #ff6b6b;
+  font-weight: 500;
+  background: #fff5f5;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.quantityWarning::before {
+  content: '⚠️';
+  font-size: 10px;
+}
+
+/* Типы животных */
+.petTypes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.petTypeTag {
+  font-size: 11px;
+  color: #007bff;
+  background: #e7f3ff;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.moreTag {
+  font-size: 11px;
+  color: #666;
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 12px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .small {
+    max-width: 100%;
+  }
+  
+  .medium {
+    max-width: 100%;
+  }
+  
+  .large {
+    max-width: 100%;
+  }
+  
+  .name {
+    font-size: 15px;
+    min-height: 40px;
+  }
+  
+  .price {
+    font-size: 20px;
+  }
+  
+  .promotionBadge {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  
+}

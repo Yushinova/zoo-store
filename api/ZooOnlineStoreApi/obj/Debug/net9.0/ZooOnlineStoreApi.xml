@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZooOnlineStoreApi</name>
+    </assembly>
+    <members>
+        <member name="M:ZooOnlineStoreApi.Api.Controllers.SwaggerTestController.GetTestAdminToken">
+            <summary>
+            Get a test administrator token for Swagger
+            </summary>
+            <remarks>
+            Uses a pre-installed test API key.
+            Returns a token in the response body for use in Swagger UI.
+            </remarks>
+        </member>
+        <member name="M:ZooOnlineStoreApi.Api.Controllers.SwaggerTestController.GetTestUserToken">
+            <summary>
+            Get a test user token for Swagger
+            </summary>
+        </member>
+        <member name="M:ZooOnlineStoreApi.Api.Controllers.SwaggerTestController.GetTokenInfo">
+            <summary>
+            Get information about the current token
+            </summary>
+        </member>
+        <member name="M:ZooOnlineStoreApi.Api.Controllers.SwaggerTestController.Logout">
+            <summary>
+            Delete all tokens (exit)
+            </summary>
+        </member>
+        <member name="T:ZooOnlineStoreApi.Storage.Migrations.Init">
+            <inheritdoc />
+        </member>
+        <member name="M:ZooOnlineStoreApi.Storage.Migrations.Init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ZooOnlineStoreApi.Storage.Migrations.Init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ZooOnlineStoreApi.Storage.Migrations.Init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ZooOnlineStoreApi.Storage.Migrations.SeedData">
+            <inheritdoc />
+        </member>
+        <member name="M:ZooOnlineStoreApi.Storage.Migrations.SeedData.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

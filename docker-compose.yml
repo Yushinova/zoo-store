@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # PostgreSQL база данных
+  postgres:
+    container_name: store_db
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=store_db
+    ports:
+      - "5433:5432"
+    networks:
+      - app-network
+
+  # ASP.NET API бэкенд
+  api:
+    build:
+      context: ./api
+      dockerfile: ./ZooOnlineStoreApi/Dockerfile
+    container_name: api-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+    
+  # Next.js Admin панель
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    container_name: admin-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+  # Next.js Store фронтенд
+  store:
+    build:
+      context: ./store
+      dockerfile: Dockerfile
+    container_name: store-app
+    ports:
+      - "3001:3001"
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  api-data:
