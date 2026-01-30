@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZooOnlineStoreApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f3555b5b8541d23e996d52fbcc7bd5a70799f1e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZooOnlineStoreApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZooOnlineStoreApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -12,8 +12,8 @@ namespace ZooOnlineStoreApi.Api.Controllers
         private readonly JwtService _jwtService;
 
         // Тестовые API ключи (можно вынести в appsettings)
-        private const string TEST_ADMIN_API_KEY = "$2a$12$ncjskFMRG08WaoGrZkXhGeq55EobPFaYfpNX9WfDd2evAhHUV1J/O";
-        private const string TEST_USER_API_KEY = "$2a$12$ncjskFMRG08WaoGrZkXhGe24AYxqlGKYn2SGAnBCDh88vCfxkW7K.";
+        private const string TEST_ADMIN_API_KEY = "$2a$12$ncjskFMRG08WaoGrZkXhGeoj38JUME5cjIWeDPRJbw2en92g1V0vS";
+        private const string TEST_USER_API_KEY = "$2a$12$ncjskFMRG08WaoGrZkXhGe5xq8CFnGdi35P71iZfdV8XISz3molNS";
 
         public SwaggerTestController(JwtService jwtService)
         {

@@ -145,3 +145,4 @@ C:\Users\User\Desktop\zoo-store\api\ZooOnlineStoreApi\obj\Debug\net9.0\ZooOnline
 C:\Users\User\Desktop\zoo-store\api\ZooOnlineStoreApi\obj\Debug\net9.0\ZooOnlineStoreApi.pdb
 C:\Users\User\Desktop\zoo-store\api\ZooOnlineStoreApi\obj\Debug\net9.0\ZooOnlineStoreApi.genruntimeconfig.cache
 C:\Users\User\Desktop\zoo-store\api\ZooOnlineStoreApi\obj\Debug\net9.0\ref\ZooOnlineStoreApi.dll
+C:\Users\User\Desktop\zoo-store\api\ZooOnlineStoreApi\obj\Debug\net9.0\ZooOnlineStoreApi.sourcelink.json
