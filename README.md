@@ -6,7 +6,7 @@ admin, store - next.js
 1-Запустить контейнеры в докере
 docker-compose up -d
 
-2-Сделать Update-Database (через Visual Studio открыть api и в консоле диспетчера пакетов 
+2-Сделать Update-Database (через Visual Studio открыть api и в консоли диспетчера пакетов 
 выполнить Update-Database), поменяв в appsettings.json подключение на "LocalConnection"
 Для работы приложения в докере необходимо подключение "DockerizedConnection"
 
