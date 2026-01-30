@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Ваш магазин",
-  description: "Описание магазина",
+  title: "Лучший друг - Магазин зоотоваров",
+  description: "Корма, уход и многое другое для ваших питомцев",
 };
 
 export default function RootLayout({ children }) {

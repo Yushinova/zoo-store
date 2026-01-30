@@ -64,12 +64,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 24px;
-  align-items: start;
+  align-items: center;
 }
 
 .petTypeItem {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   gap: 12px;
 }
 
@@ -135,7 +138,8 @@
   border: 2px dashed #dee2e6;
   cursor: pointer;
   transition: all 0.2s;
-  min-height: 200px;
+  height: 200px;
+  width: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,7 +147,7 @@
 
 .addCard:hover {
   border-color: #007bff;
-  background: #e7f3ff;
+  backgroun1d: #e7f3ff;
 }
 
 .addCardContent {
@@ -261,7 +265,7 @@
   }
   
   .actions {
-    flex-direction: row;
+    flex-direction: column;
   }
   
   .editButton,

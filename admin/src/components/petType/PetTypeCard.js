@@ -10,7 +10,7 @@ export default function PetTypeCard({
   onClick, 
   size = 'medium',
   showName = true,
-  orientation = 'horizontal' // 'horizontal' или 'vertical'
+  orientation = 'vertical' // 'horizontal' или ''
 }) {
   const [imageError, setImageError] = useState(false);
 

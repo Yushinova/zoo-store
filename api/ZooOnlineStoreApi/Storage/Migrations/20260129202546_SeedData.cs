@@ -28,10 +28,10 @@ namespace ZooOnlineStoreApi.Storage.Migrations
                 columns: new[] { "Id", "Name", "ImageName" },
                 values: new object[,]
                 {
-                    { 1, "Собаки", "products/f5d92ddd-5d50-4053-a26d-b32d36db44b6.png" },
-                    { 2, "Кошки", "products/09dd191a-ac0f-4d51-a2e7-5f12050d03ad.png" },
-                    { 3, "Птицы", "products/49a3075d-c2a1-4b84-a8e0-1521aab27f6f.png" },
-                    { 4, "Рыбки", "products/d6897c22-94b3-491a-b2c0-9ec067814f7c.png" }
+                    { 1, "Собаки", "products/b5411621-0166-4142-bf5c-bba70a6ed64c.png" },
+                    { 2, "Кошки", "products/6f17f3a6-0cce-4d8c-baa0-5c4dc7ef38b2.png" },
+                    { 3, "Птицы", "products/3db5dd86-433f-45b1-97aa-7508864a54a6.png" },
+                    { 4, "Рыбки", "products/90a97197-36b8-4122-8bf0-8f330c9cde9f.png" }
                 });
 
             // Связи категорий и типов (если есть промежуточная таблица)
@@ -133,7 +133,7 @@ namespace ZooOnlineStoreApi.Storage.Migrations
                 values: new object[,]
                 {
                     { 1, "products/fc176f2c-61e9-4b49-a345-9ab0c90456b1.jpg", "6861821437.jpg", 1 },
-                    { 2, "products/37228830-473a-44a8-b01a-6a5a18c01bf1.jpg", "wiskasDry", 2 },
+                    { 2, "products/c9b67e9f-1e69-44bf-ba70-8b726fe1d197.png", "wiskasDry", 2 },
                     { 3, "products/3a832cb7-2205-4277-b0b4-43ee12ab3028.jpg", "4rewpc13q2.jpg", 3 },
                     { 4, "products/92894b56-f3c3-4f39-8cfa-c3e0cdffddcc.png", "8253739220.png", 4 }
                 });
