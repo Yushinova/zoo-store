@@ -30,15 +30,20 @@ export function ProductFormFields({
 
   //выбран ли petType
   const isPetTypeSelected = (petTypeId) => {
-    //console.log(`Checking if petTypeId ${petTypeId} is selected`);
+    console.log(`Checking if petTypeId ${petTypeId} is selected`);
     
     if (!formData || !formData.petTypeIds) {
+      console.log('formData or petTypeIds is undefined');
       return false;
     }
     
     //проверим, что это массив
     const petTypeIds = Array.isArray(formData.petTypeIds) ? formData.petTypeIds : [];
-    const isSelected = petTypeIds.includes(petTypeId); 
+    console.log('Current petTypeIds:', petTypeIds);
+    
+    const isSelected = petTypeIds.includes(petTypeId);
+    console.log(`Is selected? ${isSelected}`);
+    
     return isSelected;
   };
 

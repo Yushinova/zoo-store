@@ -43,11 +43,11 @@ export default function ImageUploader({
       request.altText = originalFile.name;
       request.productId = productId;
 
-      //console.log('Saving to database:', request);
+      console.log('Saving to database:', request);
       
       //сохраняем в базу данных и получаем ответ или ошибку
       const savedImage = await productImageService.insert(request);
-      //console.log('Successfully saved to database:', savedImage);
+      console.log('Successfully saved to database:', savedImage);
       
       //формируем объект для отображения
       return {
@@ -102,9 +102,11 @@ export default function ImageUploader({
 
     setUploading(true);
     try {
+      console.log('Starting upload of', validFiles.length, 'files');
+      
       //загружаем файлы в Yandex Cloud Storage
       const uploadResults = await UploadService.uploadMultipleFiles(validFiles);
-      //console.log('Upload results:', uploadResults);
+      console.log('Upload results:', uploadResults);
       
       //сохраняем информацию о каждом изображении в базу данных
       const savedImages = [];
@@ -124,7 +126,7 @@ export default function ImageUploader({
 
       //обновляем состояние и добавляем новые изображения
       const newImages = [...images, ...savedImages];
-      //console.log('New images state:', newImages);
+      console.log('New images state:', newImages);
       setImages(newImages);
       
       // Уведомляем родительский компонент об изменениях
@@ -160,7 +162,7 @@ export default function ImageUploader({
     }
 
     try {
-      //console.log('Deleting image:', { imageName, index, imageId });
+      console.log('Deleting image:', { imageName, index, imageId });
       
       //удаляем из Yandex Cloud Storage работаем через роутер (обход CORS YC)
       await fetch(`/api/yandex-upload?fileName=${encodeURIComponent(imageName)}`, {

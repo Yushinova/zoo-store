@@ -25,7 +25,7 @@ export default function ProductUpdateForm({
   const [isDeleteConfirm, setIsDeleteConfirm] = useState(false);
   const [validationErrors, setValidationErrors] = useState([]);
   const [loadError, setLoadError] = useState(null);
-  const [originalProduct, setOriginalProduct] = useState(null); //сохраняем оригинальный объект продукта
+  const [originalProduct, setOriginalProduct] = useState(null); // Сохраняем оригинальный объект продукта
   
   const [formData, setFormData] = useState({
     name: '',
@@ -37,13 +37,13 @@ export default function ProductUpdateForm({
     isPromotion: false,
     isActive: true,
     categoryId: '',
-    petTypeIds: [] //для отправки в ProductRequest
+    petTypeIds: [] // Для отправки в ProductRequest
   });
 
-  const [selectedPetTypes, setSelectedPetTypes] = useState([]); //массив объектов для отображения
-  const [imagesKey, setImagesKey] = useState(0); //ключ для принудительного обновления компонента изображений
+  const [selectedPetTypes, setSelectedPetTypes] = useState([]); // Массив объектов для отображения
+  const [imagesKey, setImagesKey] = useState(0); // Ключ для принудительного обновления компонента изображений
 
-  //мемоизируем загрузку изображений товара
+  // Мемоизируем загрузку изображений товара
   const loadProductImages = useCallback(async () => {
     if (!productId) return;
     
@@ -52,9 +52,9 @@ export default function ProductUpdateForm({
       const images = Array.isArray(productData?.productImages) 
         ? productData.productImages 
         : [];
-      //console.log('Изображения загружены:', images);
+      console.log('Изображения загружены:', images);
       setExistingImages(images);
-      //меняем ключ, чтобы компонент сбросил внутреннее состояние
+      // Меняем ключ, чтобы компонент сбросил внутреннее состояние
       setImagesKey(prev => prev + 1);
     } catch (error) {
       console.error('Ошибка загрузки изображений:', error);
@@ -62,32 +62,36 @@ export default function ProductUpdateForm({
     }
   }, [productId]);
 
-  //загрузка данных товара и справочников
+  // Загрузка данных товара и справочников
   useEffect(() => {
     const loadData = async () => {
       try {
         setFetching(true);
         setLoadError(null);
-        //загружаем все данные параллельно
+        
+        console.log('=== ЗАГРУЗКА ДАННЫХ ТОВАРА ===');
+        console.log('ID товара:', productId);
+        
+        // Загружаем все данные параллельно
         const [productData, categoriesData, petTypesData] = await Promise.all([
           productService.getByIdWithAllInfo(productId),
           categoryService.getAllAsync(),
           petTypeService.getAll().catch(() => [])
         ]);
         
-        //console.log('Данные товара загружены (ProductResponse):', productData);
+        console.log('Данные товара загружены (ProductResponse):', productData);
         
-        //форма с данными товара
+        // Заполняем форму данными товара
         if (productData) {
-          //сохраняем оригинальный объект продукта
+          // Сохраняем оригинальный объект продукта
           setOriginalProduct(productData);
           
-          //извлекаем petTypeIds из массива petTypes (объектов)
+          // Извлекаем petTypeIds из массива petTypes (объектов)
           const petTypeIds = Array.isArray(productData.petTypes) 
             ? productData.petTypes.map(pet => pet.id).filter(id => id !== undefined && id !== null)
             : [];
           
-          //конвертируем ProductResponse в данные для формы
+          // Конвертируем ProductResponse в данные для формы
           const formattedData = {
             name: productData.name || '',
             description: productData.description || '',
@@ -98,27 +102,33 @@ export default function ProductUpdateForm({
             isPromotion: Boolean(productData.isPromotion),
             isActive: productData.isActive !== undefined ? Boolean(productData.isActive) : true,
             categoryId: productData.categoryId?.toString() || '',
-            petTypeIds: petTypeIds //массив ID для ProductRequest
+            petTypeIds: petTypeIds // Это массив ID для ProductRequest
           };
+          
+          console.log('Форматированные данные для формы:', formattedData);
+          console.log('PetType IDs для отправки:', petTypeIds);
+          console.log('PetTypes объекты из ProductResponse:', productData.petTypes);
           
           setFormData(formattedData);
           
-          //сохраняем выбранные типы животных как объекты для отображения
+          // Сохраняем выбранные типы животных как объекты для отображения
           setSelectedPetTypes(productData.petTypes || []);
           
-          //сохраняем изображения товара (массив ProductImageResponse)
+          // Сохраняем изображения товара (массив ProductImageResponse)
           const images = Array.isArray(productData.productImages) 
             ? productData.productImages 
             : [];
-          //console.log('Изображения товара загружены:', images);
+          console.log('Изображения товара загружены:', images);
           setExistingImages(images);
         } else {
           throw new Error('Товар не найден');
         }
         
-        //сохраняем категории и типы животных
+        // Сохраняем категории и типы животных
         setCategories(Array.isArray(categoriesData) ? categoriesData : []);
         setPetTypes(Array.isArray(petTypesData) ? petTypesData : []);
+        
+        console.log('=== ЗАГРУЗКА ЗАВЕРШЕНА ===');
         
       } catch (error) {
         console.error('Ошибка загрузки данных товара:', error);
@@ -134,22 +144,22 @@ export default function ProductUpdateForm({
       setLoadError('ID товара не указан');
       setFetching(false);
     }
-  }, [productId]); //зависимость только от productId
+  }, [productId]); // Зависимость только от productId
 
-  //мемоизируем обработчик изменения изображений
+  // Мемоизируем обработчик изменения изображений
   const handleImagesChange = useCallback((updatedImages) => {
     console.log('Images changed:', updatedImages);
     setExistingImages(updatedImages);
-  }, []);
+  }, []); // Без зависимостей
 
-  //мемоизируем обработчик удаления изображения
+  // Мемоизируем обработчик удаления изображения
   const handleImageDelete = useCallback(() => {
     console.log('Image deleted, reloading images...');
-    //перезагружаем изображения товара
+    // Перезагружаем изображения товара
     loadProductImages();
-  }, [loadProductImages]); //зависимость от loadProductImages
+  }, [loadProductImages]); // Зависимость от loadProductImages
 
-  //очищаем ошибки валидации при изменении данных
+  // Очищаем ошибки валидации при изменении данных
   useEffect(() => {
     if (validationErrors.length > 0) {
       setValidationErrors([]);
@@ -186,16 +196,16 @@ export default function ProductUpdateForm({
       
       let newIds;
       if (isSelected) {
-        // удаляем ID
+        // Удаляем ID
         newIds = currentIds.filter(id => id !== petTypeId);
-        //обновляем selectedPetTypes
+        // Обновляем selectedPetTypes
         setSelectedPetTypes(prevSelected => 
           prevSelected.filter(pet => pet.id !== petTypeId)
         );
       } else {
-        //добавляем ID
+        // Добавляем ID
         newIds = [...currentIds, petTypeId];
-        //находим объект petType и добавляем в selectedPetTypes
+        // Находим объект petType и добавляем в selectedPetTypes
         const petTypeToAdd = petTypes.find(pet => pet.id === petTypeId);
         if (petTypeToAdd) {
           setSelectedPetTypes(prevSelected => [...prevSelected, petTypeToAdd]);
@@ -240,10 +250,10 @@ export default function ProductUpdateForm({
     setLoading(true);
 
     try {
-      //запрос на обновление согласно ProductRequest
+      // Создаем запрос на обновление согласно ProductRequest
       const request = new ProductRequest();
       
-      //заполняем поля из formData
+      // Заполняем поля из formData
       request.name = formData.name.trim();
       request.description = formData.description.trim();
       request.price = Number(formData.price) || 0;
@@ -251,14 +261,14 @@ export default function ProductUpdateForm({
       request.quantity = Number(formData.quantity) || 0;
       request.brand = formData.brand.trim();
       
-      //рейтинг из оригинального продукта
+      // Сохраняем рейтинг из оригинального продукта (обычно не меняется при обновлении)
       request.rating = originalProduct?.rating || 0;
       
       request.isPromotion = Boolean(formData.isPromotion);
       request.isActive = Boolean(formData.isActive);
       request.categoryId = Number(formData.categoryId);
       
-      //конвертируем petTypeIds в массив чисел для ProductRequest
+      // Конвертируем petTypeIds в массив чисел для ProductRequest
       const petTypeIds = Array.isArray(formData.petTypeIds) 
         ? formData.petTypeIds.map(id => Number(id)).filter(id => !isNaN(id))
         : [];
@@ -270,15 +280,17 @@ export default function ProductUpdateForm({
       console.log('PetTypeIds для отправки:', petTypeIds);
       console.log('Рейтинг из оригинала:', originalProduct?.rating);
       
+      // Используем метод updateById с productId и ProductRequest
       const updatedProduct = await productService.updateById(productId, request);
-      //console.log('Товар успешно обновлен (ProductResponse):', updatedProduct);
       
-      //обновляем originalProduct с новыми данными
+      console.log('Товар успешно обновлен (ProductResponse):', updatedProduct);
+      
+      // Обновляем originalProduct с новыми данными
       setOriginalProduct(updatedProduct);
       
       alert(`Товар "${updatedProduct.name}" успешно обновлен!`);
       
-      //переходим к шагу управления картинками
+      // Переходим к шагу управления картинками
       setStep(2);
       
     } catch (error) {
@@ -335,7 +347,7 @@ export default function ProductUpdateForm({
     );
     
     if (confirmed && originalProduct) {
-      //используем оригинальный ProductResponse для восстановления формы
+      // Используем оригинальный ProductResponse для восстановления формы
       const petTypeIds = Array.isArray(originalProduct.petTypes) 
         ? originalProduct.petTypes.map(pet => pet.id).filter(id => id !== undefined && id !== null)
         : [];
@@ -359,7 +371,7 @@ export default function ProductUpdateForm({
     }
   };
 
-  //показываем ошибку загрузки
+  // Показываем ошибку загрузки
   if (loadError) {
     return (
       <div className={styles.container}>
@@ -388,6 +400,7 @@ export default function ProductUpdateForm({
     );
   }
 
+  // Загрузка
   if (fetching) {
     return (
       <div className={styles.container}>
@@ -410,6 +423,22 @@ export default function ProductUpdateForm({
           <div className={styles.currentName}>
             Текущее название: <strong>{formData.name}</strong>
           </div>
+        </div>
+        
+        {/* Отладочная информация */}
+        <div className={styles.debugInfo}>
+          <details>
+            <summary>Информация о загрузке</summary>
+            <div className={styles.debugStats}>
+              <p><strong>Товар:</strong> {formData.name}</p>
+              <p><strong>Рейтинг (из оригинала):</strong> {originalProduct?.rating || 0}</p>
+              <p><strong>Категорий загружено:</strong> {categories.length}</p>
+              <p><strong>Типов животных загружено:</strong> {petTypes.length}</p>
+              <p><strong>Выбрано типов животных:</strong> {Array.isArray(formData.petTypeIds) ? formData.petTypeIds.length : 0}</p>
+              <p><strong>Изображений товара:</strong> {existingImages.length}</p>
+              <p><strong>Категория ID:</strong> {formData.categoryId || '(не выбран)'}</p>
+            </div>
+          </details>
         </div>
         
         <ValidationErrors errors={validationErrors} />

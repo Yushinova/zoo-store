@@ -17,7 +17,7 @@ export default function PetTypeCard({
   if (!petType) return null;
 
   useEffect(() => {
-    //console.log('PetTypeCard received:', petType);
+    console.log('PetTypeCard received:', petType);
   }, [petType]);
 
   const getImageUrl = () => {

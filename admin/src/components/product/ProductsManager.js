@@ -32,7 +32,7 @@ export default function ProductsManager() {
       setLoading(true);
       setError('');
       
-     // console.log('Loading products with filters:', useFilters);
+      console.log('Loading products with filters:', useFilters);
       const productsData = await productService.getAllWithFilterAndPagination(useFilters);
       
       setProducts(productsData || []);
@@ -66,7 +66,7 @@ export default function ProductsManager() {
   };
 
   const handleApplyFilters = async (appliedFilters) => {
-    //console.log('Applying filters:', appliedFilters);
+    console.log('Applying filters:', appliedFilters);
     const newFilters = {
       ...appliedFilters,
       page: 1,
@@ -77,6 +77,7 @@ export default function ProductsManager() {
   };
 
   const handleResetFilters = async (resetFilters) => {
+    console.log('Filters reset:', resetFilters);
     const defaultFilters = new ProductQueryParameters();
     defaultFilters.page = 1;
     defaultFilters.pageSize = filters.pageSize;
@@ -103,14 +104,14 @@ export default function ProductsManager() {
 
   //клик по товару для просмотра деталей
   const handleProductClick = (product) => {
-    //console.log('Product clicked:', product);
+    console.log('Product clicked:', product);
     setSelectedProductId(product.id);
     setshowDetailsForm(true);
   };
 
   //редактирование товара
   const handleProductEdit = (product) => {
-    //console.log('Product edit clicked:', product);
+    console.log('Product edit clicked:', product);
     setSelectedProductId(product.id);
     setSelectedProductName(product.name);
     setShowUpdateForm(true);

@@ -28,7 +28,7 @@ export class OrderService {
       }
 
       const ordersData = await response.json();
-      //console.log(ordersData);
+      console.log(ordersData);
       //преобразуем данные в OrderResponse
       return ordersData.map(orderData => {
         const order = new OrderResponse();
@@ -77,6 +77,7 @@ export class OrderService {
       }
 
       const updatedOrder = await response.json();
+      console.log('✅ Order updated successfully:', updatedOrder);
       return updatedOrder;
 
     } catch (error) {

@@ -15,6 +15,8 @@ export class ProductImageService {
 
   async insert(productImageRequest) {
     try {
+      console.log('Sending insert request:', productImageRequest);
+      
       const response = await fetch(this.baseUrl, {
         method: 'POST',
         headers: {
@@ -42,6 +44,7 @@ export class ProductImageService {
         
         throw new Error(errorMessage);
       }
+      console.log('Insert successful - empty response');
       return { success: true, message: 'Image added successfully' };
 
     } catch (error) {
@@ -53,6 +56,8 @@ export class ProductImageService {
   //удаление изображения по имени
   async deleteByName(name) {
     try {
+      console.log('Deleting image with name:', name);
+      
       const response = await fetch(`${this.baseUrl}?name=${encodeURIComponent(name)}`, {
         method: 'DELETE',
         credentials: 'include'
@@ -78,6 +83,7 @@ export class ProductImageService {
       }
 
       //для успешного Ok() без контента
+      console.log('Delete successful - empty response');
       return { success: true, message: 'Image deleted successfully' };
 
     } catch (error) {

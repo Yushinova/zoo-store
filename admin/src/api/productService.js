@@ -18,7 +18,7 @@ export class ProductService {
       });
 
       const url = `${this.baseUrl}?${queryParams.toString()}`;
-      //console.log('Fetching products from:', url);
+      console.log('Fetching products from:', url);
 
       const response = await fetch(url, {
         method: 'GET',
@@ -40,6 +40,7 @@ export class ProductService {
       }
 
       const products = await response.json();
+      console.log('Products fetched successfully:', products);
       return products;
 
     } catch (error) {
@@ -64,6 +65,7 @@ export class ProductService {
         throw new Error('Product not found');
       }
       const product = await response.json();
+      console.log('Product fetched successfully:', product);
       return product;
 
     } catch (error) {
@@ -75,7 +77,7 @@ export class ProductService {
   //POST /api/product/admin - создать продукт (только для админов)
   async insertProduct(productRequest) {
     try {
-      //console.log('Creating product:', productRequest);
+      console.log('Creating product:', productRequest);
 
       const response = await fetch(`${this.baseUrl}/admin`, {
         method: 'POST',
@@ -101,6 +103,7 @@ export class ProductService {
       }
 
       const createdProduct = await response.json();
+      console.log('Product created successfully:', createdProduct);
       return createdProduct;
 
     } catch (error) {
@@ -112,7 +115,7 @@ export class ProductService {
   //PATCH /api/product/admin/{id} обновить продукт (только для админов)
   async updateById(id, productRequest) {
     try {
-      //console.log('Updating product:', { id, ...productRequest });
+      console.log('Updating product:', { id, ...productRequest });
 
       const response = await fetch(`${this.baseUrl}/admin/${id}`, {
         method: 'PATCH',
@@ -138,6 +141,7 @@ export class ProductService {
       }
 
       const updatedProduct = await response.json();
+      console.log('Product updated successfully:', updatedProduct);
       return updatedProduct;
 
     } catch (error) {
@@ -149,6 +153,8 @@ export class ProductService {
   //DELETE /api/product/admin/{id} -удалить продукт (только для админв)
   async deleteById(id) {
     try {
+      console.log('Deleting product with ID:', id);
+
       const response = await fetch(`${this.baseUrl}/admin/${id}`, {
         method: 'DELETE',
         credentials: 'include'
@@ -167,6 +173,8 @@ export class ProductService {
         
         throw new Error(errorMessage);
       }
+
+      console.log('Product deleted successfully');
       return { success: true, message: 'Product deleted successfully' };
 
     } catch (error) {

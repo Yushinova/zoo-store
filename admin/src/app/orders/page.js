@@ -23,7 +23,7 @@ export default function OrdersPage() {
     if (!adminService.currentAdmin) {
       router.push('/auth');
     } else {
-      //console.log('admin found:', adminService.currentAdmin);
+      console.log('admin found:', adminService.currentAdmin);
       setAdmin(adminService.currentAdmin);
       loadOrders();
     }
@@ -33,7 +33,7 @@ export default function OrdersPage() {
     try {
       setLoading(true);
       const ordersData = await orderService.getOrdersSorted(currentPage, pageSize);
-      //console.log("orders loaded:", ordersData);
+      console.log("orders loaded:", ordersData);
       
       setOrders(ordersData);
     } catch (error) {

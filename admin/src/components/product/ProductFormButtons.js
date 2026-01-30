@@ -15,12 +15,20 @@ export function ProductFormButtons({
   submitLabel
 }) {
   
+  console.log('=== ProductFormButtons Debug ===');
+  console.log('formData:', formData);
+  console.log('categories:', categories);
+  console.log('formData?.petTypeIds:', formData?.petTypeIds);
+  console.log('Type of formData?.petTypeIds:', typeof formData?.petTypeIds);
+  console.log('Is Array?', Array.isArray(formData?.petTypeIds));
+  
   const canSubmit = () => {
     if (loading) return false;
     
     //categories
     const categoriesArray = Array.isArray(categories) ? categories : [];
     if (categoriesArray.length === 0) {
+      console.log('Cannot submit: categories is empty');
       return false;
     }
     
@@ -31,9 +39,11 @@ export function ProductFormButtons({
     }
     
     if (petTypeIds.length === 0) {
+      console.log('Cannot submit: petTypeIds is empty');
       return false;
     }
-
+    
+    console.log('Can submit: true');
     return true;
   };
 

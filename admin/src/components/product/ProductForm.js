@@ -37,6 +37,7 @@ export default function ProductForm({ onSuccess, onCancel }) {
   useEffect(() => {
     const loadData = async () => {
       try {
+        console.log('Загрузка категорий и типов животных...');
         const [categoriesData, petTypesData] = await Promise.all([
           categoryService.getAllAsync(),
           petTypeService.getAll()
@@ -132,10 +133,10 @@ const formatPrice = (price) => {
       request.categoryId = Number(formData.categoryId);
       request.petTypeIds = formData.petTypeIds.map(id => Number(id));
 
-      //console.log('Creating product with data:', request);
+      console.log('Creating product with data:', request);//для отладки
       const createdProduct = await productService.insertProduct(request);
       
-      //console.log('Product created:', createdProduct);
+      console.log('Product created:', createdProduct);
       setCreatedProductId(createdProduct.id);
       setCreatedProductName(createdProduct.name);
       
@@ -177,7 +178,7 @@ const formatPrice = (price) => {
   };
 
   const handleImagesChange = (images) => {
-    //console.log('Изображения загружены:', images);
+    console.log('Изображения загружены:', images);
     if (images.length > 0) {
       alert(`Загружено ${images.length} изображений для товара "${createdProductName}"`);
     }

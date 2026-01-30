@@ -17,7 +17,9 @@ export function ProductImagesStep({
   const displayName = isCreateMode ? createdProductName : productName;
 
   //обработчик изменения изображений
-  const handleImagesChange = (updatedImages) => {    
+  const handleImagesChange = (updatedImages) => {
+    console.log('ProductImagesStep: images changed', updatedImages.length);
+    
     if (onImagesChange) {
       onImagesChange(updatedImages);
     }
@@ -25,6 +27,8 @@ export function ProductImagesStep({
 
   //обработчик удаления изображения
   const handleImageDelete = () => {
+    console.log('ProductImagesStep: image deleted');
+    
     if (onImageDelete) {
       onImageDelete();
     }

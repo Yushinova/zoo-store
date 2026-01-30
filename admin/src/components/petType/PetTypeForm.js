@@ -45,7 +45,7 @@ export default function PetTypeForm({
       if (petType.imageName) {
         //полный URL к изображению в Yandex Cloud
         const fullImageUrl = `${YANDEX_CLOUD_BASE_URL}/${YANDEX_BUCKET_NAME}/${petType.imageName}`;
-        //console.log('Setting image preview URL:', fullImageUrl);
+        console.log('Setting image preview URL:', fullImageUrl);
         setImagePreview(fullImageUrl);
       }
     }
@@ -115,21 +115,25 @@ export default function PetTypeForm({
 
       //выбрано новое изображение, загружаем его
       if (imageFile) {
+        console.log('Загружаем новое изображение...');
         const uploadResults = await UploadService.uploadMultipleFiles([imageFile]);
         const uploadedImage = uploadResults[0];
         imageFileName = uploadedImage.fileName;
-        //console.log('Новое изображение загружено:', uploadedImage);
+        console.log('Новое изображение загружено:', uploadedImage);
       }
 
       if (isEditMode) {
         //РЕДАКТИРОВАНИЕ - изображение
+        console.log('Редактируем Pet Type...');
         const updateRequest = {
           id: petType.id,
           name: formData.name,
           imageName: imageFileName, //может быть пустым если нет изображения
           CategoriesIds: selectedCategories
         };
-        //const updatedPetType = await petTypeService.updateWithCategories(updateRequest);
+
+        console.log('Обновляем Pet Type с данными:', updateRequest);
+        const updatedPetType = await petTypeService.updateWithCategories(updateRequest);
         console.log('Pet Type обновлен:', updatedPetType);
 
         alert(`Тип питомца "${updatedPetType.name}" успешно обновлен!`);
@@ -147,7 +151,7 @@ export default function PetTypeForm({
         };
 
         const createdPetType = await petTypeService.insert(petTypeRequest);
-        //console.log('Pet Type создан:', createdPetType);
+        console.log('Pet Type создан:', createdPetType);
 
         //обновляем категории
         if (selectedCategories.length > 0) {
@@ -159,6 +163,7 @@ export default function PetTypeForm({
           };
           
           await petTypeService.updateWithCategories(updateRequest);
+          console.log('Связи с категориями обновлены');
         }
 
         alert(`Тип питомца "${createdPetType.name}" успешно создан!`);

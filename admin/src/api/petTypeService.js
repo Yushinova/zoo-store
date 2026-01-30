@@ -27,6 +27,7 @@ export class PetTypeService{
       }
 
       const petTypes = await response.json();
+      console.log('Products fetched successfully:', petTypes);
       return petTypes;
 
     } catch (error) {
@@ -57,6 +58,7 @@ async getAllWithCategoties(){
       }
 
       const petTypes = await response.json();
+      console.log('Products fetched successfully:', petTypes);
       return petTypes;
 
     } catch (error) {
@@ -67,6 +69,8 @@ async getAllWithCategoties(){
 
 async insert(petTypeRequest) {
     try {
+      console.log('Creating product:', petTypeRequest);
+
       const response = await fetch(this.baseUrl, {
         method: 'POST',
         headers: {
@@ -93,6 +97,7 @@ async insert(petTypeRequest) {
       }
 
       const createdPetType = await response.json();
+      console.log('Insert successful, created pet type:', createdPetType);
       return createdPetType;
 
     } catch (error) {
@@ -127,6 +132,7 @@ async insert(petTypeRequest) {
       }
 
       const updatedPetType = await response.json();
+      console.log('PetType updated successfully:', updatedPetType);
       return updatedPetType;
 
      }
@@ -158,6 +164,8 @@ async insert(petTypeRequest) {
         
         throw new Error(errorMessage);
       }
+
+      console.log('pet type deleted successfully');
       return { success: true, message: 'pet type deleted successfully' };
 
     } catch (error) {

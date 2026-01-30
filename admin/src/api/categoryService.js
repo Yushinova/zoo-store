@@ -27,6 +27,7 @@ export class CategoryService{
       }
 
       const categories = await response.json();
+      console.log('Products fetched successfully:', categories);
       return categories;
 
     } catch (error) {
@@ -56,6 +57,7 @@ async getById(id){
       }
 
       const category = await response.json();
+      console.log('Category fetched successfully:', category);
       return category;
 
     } catch (error) {
@@ -65,6 +67,8 @@ async getById(id){
 }
  async insert(categoryRequest) {
     try {
+      console.log('Creating product:', categoryRequest);
+
       const response = await fetch(this.baseUrl, {
         method: 'POST',
         headers: {
@@ -91,6 +95,7 @@ async getById(id){
       }
 
       const createdCategory = await response.json();
+      console.log('Insert successful, created category:', createdCategory);
       return createdCategory;
 
     } catch (error) {
@@ -101,6 +106,8 @@ async getById(id){
 
  async deleteById(id) {
     try {
+      console.log('Deleting category with ID:', id);
+
       const response = await fetch(`${this.baseUrl}/${id}`, {
         method: 'DELETE',
         credentials: 'include'
@@ -120,6 +127,7 @@ async getById(id){
         throw new Error(errorMessage);
       }
 
+      console.log('category deleted successfully');
       return { success: true, message: 'category deleted successfully' };
 
     } catch (error) {

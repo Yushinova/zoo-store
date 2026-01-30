@@ -29,9 +29,9 @@ namespace ZooOnlineStoreApi.Storage.Migrations
                 values: new object[,]
                 {
                     { 1, "Собаки", "products/f5d92ddd-5d50-4053-a26d-b32d36db44b6.png" },
-                    { 2, "Кошки", "products/03ce1737-3e03-4dfd-89f2-8dc86145893c.png" },
-                    { 3, "Птицы", "products/20a0cb47-e27a-467c-b7fc-b28eaadd322a.png" },
-                    { 4, "Рыбки", "products/02da8261-94aa-4886-8e2a-405612a929b6.png" }
+                    { 2, "Кошки", "products/09dd191a-ac0f-4d51-a2e7-5f12050d03ad.png" },
+                    { 3, "Птицы", "products/49a3075d-c2a1-4b84-a8e0-1521aab27f6f.png" },
+                    { 4, "Рыбки", "products/d6897c22-94b3-491a-b2c0-9ec067814f7c.png" }
                 });
 
             // Связи категорий и типов (если есть промежуточная таблица)

@@ -57,7 +57,7 @@ export default function HomePage() {
           заказами, категориями и другими настройками магазина.
         </p>
         
-        {/*ДОБАВЛЯЕМ КНОПКИ ДЛЯ НАВИГАЦИИ */}
+        {/* ⚡ ДОБАВЛЯЕМ КНОПКИ ДЛЯ НАВИГАЦИИ */}
         <div className={styles.navigation}>
           <button 
             onClick={navigateToOrders}

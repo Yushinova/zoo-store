@@ -39,10 +39,10 @@ export default function AuthForm() {
         loginData.password = formData.password;
         //получаем данные админа из бд после входа с apiKey
         const apiKey = await adminService.login(loginData);
-        //console.log("apikey: " + apiKey);
+        console.log("apikey: " + apiKey);
         //получаем токен по ключу
         const token = await authService.getTokenByApiKey(apiKey);
-        //console.log("token: " + token);
+        console.log("token: " + token);
         //получаем данные админа
         const adminResponse = await adminService.getAdmin(apiKey);
         setMessage(`Успешный вход! Добро пожаловать, ${adminResponse.name}`);

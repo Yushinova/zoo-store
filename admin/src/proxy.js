@@ -6,7 +6,7 @@ export function proxy(request) {
   
   const { pathname } = request.nextUrl;
 
-  console.log('Proxy check:', { 
+  console.log('Middleware check:', { 
     pathname, 
     hasToken: !!adminToken
   });
