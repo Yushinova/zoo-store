@@ -28,7 +28,6 @@ export class OrderService {
       }
 
       const ordersData = await response.json();
-      console.log(ordersData);
       //преобразуем данные в OrderResponse
       return ordersData.map(orderData => {
         const order = new OrderResponse();
@@ -56,8 +55,6 @@ export class OrderService {
   //обновить заказ по id
   async updateOrderById(orderId, updateData) {
     try {
-
-      console.log('🔄 Updating order:', orderId, updateData);
 
       const response = await fetch(
         `${this.baseUrl}/api/order/admin/${orderId}`,

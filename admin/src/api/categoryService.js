@@ -27,11 +27,10 @@ export class CategoryService{
       }
 
       const categories = await response.json();
-      console.log('Products fetched successfully:', categories);
       return categories;
 
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error('Error fetching categories:', error);
       throw error;
     }
   }
@@ -57,7 +56,6 @@ async getById(id){
       }
 
       const category = await response.json();
-      console.log('Category fetched successfully:', category);
       return category;
 
     } catch (error) {
@@ -67,8 +65,6 @@ async getById(id){
 }
  async insert(categoryRequest) {
     try {
-      console.log('Creating product:', categoryRequest);
-
       const response = await fetch(this.baseUrl, {
         method: 'POST',
         headers: {
@@ -106,8 +102,6 @@ async getById(id){
 
  async deleteById(id) {
     try {
-      console.log('Deleting category with ID:', id);
-
       const response = await fetch(`${this.baseUrl}/${id}`, {
         method: 'DELETE',
         credentials: 'include'

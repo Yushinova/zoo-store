@@ -27,7 +27,6 @@ export class PetTypeService{
       }
 
       const petTypes = await response.json();
-      console.log('Products fetched successfully:', petTypes);
       return petTypes;
 
     } catch (error) {
@@ -58,7 +57,6 @@ async getAllWithCategoties(){
       }
 
       const petTypes = await response.json();
-      console.log('Products fetched successfully:', petTypes);
       return petTypes;
 
     } catch (error) {
@@ -69,8 +67,6 @@ async getAllWithCategoties(){
 
 async insert(petTypeRequest) {
     try {
-      console.log('Creating product:', petTypeRequest);
-
       const response = await fetch(this.baseUrl, {
         method: 'POST',
         headers: {
@@ -144,8 +140,6 @@ async insert(petTypeRequest) {
 
  async deleteById(id) {
     try {
-      console.log('Deleting pet type with ID:', id);
-
       const response = await fetch(`${this.baseUrl}/${id}`, {
         method: 'DELETE',
         credentials: 'include'

@@ -42,11 +42,13 @@ export default function PetTypeForm({
       }
       
       //превью изображения если есть
-      if (petType.imageName) {
-        //полный URL к изображению в Yandex Cloud
+      if (petType.imageName && petType.imageName.trim() !== '') {
+        // Полный URL к изображению в Yandex Cloud
         const fullImageUrl = `${YANDEX_CLOUD_BASE_URL}/${YANDEX_BUCKET_NAME}/${petType.imageName}`;
-        console.log('Setting image preview URL:', fullImageUrl);
         setImagePreview(fullImageUrl);
+      } else {
+        // Устанавливаем заглушку, если нет изображения
+        setImagePreview('/notimage.jpeg');
       }
     }
   }, [petType, isEditMode]);
@@ -260,10 +262,10 @@ export default function PetTypeForm({
                   type="button"
                   onClick={() => {
                     setImageFile(null);
-                    setImagePreview('');
+                    setImagePreview('/notimage.jpeg');
                     //при редактировании очищаем imageName
                     if (isEditMode) {
-                      setFormData(prev => ({ ...prev, imageName: '' }));
+                      setFormData(prev => ({ ...prev, imageName: '/notimage.jpeg' }));
                     }
                   }}
                   className={styles.removeImageButton}

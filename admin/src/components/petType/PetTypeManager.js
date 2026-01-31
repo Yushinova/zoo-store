@@ -56,6 +56,18 @@ export default function PetTypeManager() {
     if (!petTypeToDelete) return;
 
     try {
+      const response = await fetch(
+        `/api/yandex-upload?fileName=${encodeURIComponent(petTypeToDelete.imageName)}`, 
+        {
+          method: 'DELETE',
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Ошибка удаления: ${response.status}`);
+      }
+      
+      console.log('Изображение удалено из Яндекс.Облака:', petTypeToDelete.imageName);
       await petTypeService.deleteById(petTypeToDelete.id);
       await loadPetTypes(); //перезагружаем список
       alert(`Тип питомца "${petTypeToDelete.name}" успешно удален!`);
